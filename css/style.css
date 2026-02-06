@@ -1,0 +1,179 @@
+html {
+    font-size: 62.5%;
+}
+
+/*   Basico  */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+
+
+body {
+    background: #f5f7fb;
+    padding: 4rem; 
+    color: #333;
+}
+
+
+/*  Títulos  */
+h1 {
+    text-align: center;
+    margin-bottom: 3rem; 
+}
+
+h2 {
+    margin-bottom: 1.5rem;
+    color: #444;
+}
+
+
+/*  Secciones  */
+section {
+    background: white;
+    padding: 2.5rem; 
+    border-radius: 1rem; 
+    box-shadow: 0 0.4rem 1rem rgba(0,0,0,0.08);
+    margin-bottom: 3rem; 
+}
+
+/*  Formulario */
+#cliente-form {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem 2.5rem; 
+}
+
+
+
+fieldset,
+button[type="submit"] {
+    grid-column: span 2;
+}
+
+fieldset legend {
+    font-weight: 700;
+    padding: 0 0.5rem; 
+    font-size: 1.4rem;
+}
+
+#cliente-form div {
+    display: flex;
+    flex-direction: column;
+}
+
+
+
+label {
+    font-size: 1.4rem;
+    font-weight: 580;
+    margin-bottom: 0.5rem; 
+}
+
+
+
+input,
+select {
+    padding: 0.8rem 1rem; 
+    border-radius: 0.6rem; 
+    border: 0.1rem solid #ccc; 
+    font-size: 1.2rem; 
+    transition: 0.2s;
+}
+
+input:focus,
+select:focus {
+    outline: none;
+    border-color: #4a90e2;
+    box-shadow: 0 0 0.3rem #4a90e2; 
+}
+
+
+
+fieldset {
+    padding: 1rem; 
+    border-radius: 0.6rem; 
+    border: 0.1rem solid #ccc;
+}
+
+
+/* Botones*/
+button {
+    background: #4a90e2;
+    color: white;
+    border: none;
+    padding: 1rem; 
+    border-radius: 0.6rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+button:hover {
+    background: #357acb;
+}
+
+
+
+.error {
+    color: red;
+    font-size: 1.2rem; 
+    margin-top: 0.4rem; 
+    min-height: 1.4rem; 
+}
+
+
+/*Tabla*/
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem; 
+}
+
+th {
+    background: #4a90e2;
+    color: white;
+    padding: 1rem; 
+}
+
+td {
+    padding: 0.8rem; 
+    text-align: center;
+}
+
+th,
+td {
+    border: 0.1rem solid #ddd;
+}
+
+/* Botones de la tabla*/
+td button {
+    padding: 0.6rem 1rem; 
+    font-size: 1.2rem; 
+    margin: 0.2rem; 
+    border-radius: 0.4rem; 
+}
+
+td button:first-child {
+    background: #27ae60;
+}
+
+td button:last-child {
+    background: #e74c3c;
+}
+
+
+/* RESPONSIVE */
+@media (max-width: 76.8rem) { 
+    #cliente-form {
+        grid-template-columns: 1fr;
+    }
+
+    fieldset,
+    button[type="submit"] {
+        grid-column: span 1;
+    }
+}
