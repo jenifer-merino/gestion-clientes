@@ -1,12 +1,12 @@
 const form = document.getElementById("cliente-form");
 
 document.addEventListener("DOMContentLoaded", () => {
-    renderClientes(obtenerClientes());
+    renderClientes(obtenerClientes()); // Cargar clientes al iniciar la página
 });
 
 
 function validarContraseña(password) {
-    const regex = /^(?=.*[A-Z])(?=.*\d).{8,}$/;
+    const regex = /^(?=.*[A-Z])(?=.*\d).{8,}$/; // Al menos 8 caracteres, una mayúscula y un número, expresion regular para validar la contraseña
     return regex.test(password);
 }
 
@@ -21,15 +21,15 @@ function limpiarErrores() {
     document.querySelectorAll(".error").forEach(e => e.textContent = "");
 }
 
-let indiceEditado = null;
+let indiceEditado = null; 
 
-form.addEventListener("submit", function (e) {
-    e.preventDefault();
+form.addEventListener("submit", function (e) { // Escuchar el evento submit del formulario
+    e.preventDefault(); // Evitar que el formulario se envíe y recargue la página
 
     limpiarErrores(); // Siempre al iniciar
 
 
-    const clientes = obtenerClientes();
+    const clientes = obtenerClientes(); // Obtener la lista actual de clientes para validar contra ella y luego actualizarla
 
     const nombre = document.getElementById("nombre").value.trim();
     const cedula = document.getElementById("cedula").value.trim();
@@ -49,11 +49,11 @@ form.addEventListener("submit", function (e) {
             "Debe tener mínimo 8 caracteres, una mayúscula y un número"
         );
         return;
-    }
+    } // Validar la contraseña usando la función validarContraseña y mostrar un error si no cumple con los requisitos
 
     const cedulaExiste = clientes.some(
         (c, i) => c.cedula === cedula && i !== indiceEditado
-    );
+    );// Validar que la cédula sea única entre los clientes, ignorando el cliente que se está editando
 
     if (cedulaExiste) {
         mostrarError("cedula", "Ya existe un cliente con esta cédula");
@@ -62,11 +62,11 @@ form.addEventListener("submit", function (e) {
 
     const correoExiste = clientes.some(
         (c, i) => c.correo.toLowerCase() === correo && i !== indiceEditado
-    );
+    ); // Validar que el correo sea único entre los clientes, ignorando el cliente que se está editando 
 
     if (correoExiste) {
         mostrarError("correo", "Ya existe un cliente con este correo");
-        return;
+        return; //
     }
 
 
@@ -81,7 +81,7 @@ form.addEventListener("submit", function (e) {
         activo,
         password,
         sexo
-    };
+    }; // Crear un objeto cliente con los datos del formulario, usando shorthand para asignar las propiedades con el mismo nombre que las variables
 
 
     /* crear o editar */
@@ -92,9 +92,9 @@ form.addEventListener("submit", function (e) {
         clientes[indiceEditado] = cliente;
         indiceEditado = null;
 
-        document.getElementById("cedula").disabled = false;
+        document.getElementById("cedula").disabled = false; // Rehabilitar el campo cédula después de editar
         document.querySelector("button[type='submit']").textContent = "Guardar Cliente";
-    }
+    }// Si no se está editando, agregar el nuevo cliente a la lista; si se está editando, actualizar el cliente existente
 
 
     guardarClientes(clientes);

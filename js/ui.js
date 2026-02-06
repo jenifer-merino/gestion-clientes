@@ -1,11 +1,11 @@
 function renderClientes(clientes){
     const tbody = document.getElementById("clientes-lista");
-    tbody.innerHTML = "";
+    tbody.innerHTML = ""; // Limpiar tabla antes de volver a renderizar
 
     clientes.forEach((cliente, index) =>{
-        const fila = document.createElement("tr");
+        const fila = document.createElement("tr"); // Crear una nueva fila para cada cliente
 
-        fila.innerHTML = `
+        fila.innerHTML = ` 
             <td>${cliente.nombre}</td>
             <td>${cliente.cedula}</td>
             <td>${cliente.correo}</td>
@@ -16,7 +16,7 @@ function renderClientes(clientes){
                 <button onclick="editarCliente(${index})">Editar</button>
                 <button onclick="eliminarClienteUI(${index})">Eliminar</button>
             </td>
-        `;
+        `; // Rellenar la fila dinamicamente con los datos del cliente usando template string
 
         tbody.appendChild(fila);
     });
@@ -47,5 +47,5 @@ function editarCliente(index) {
 
         document.querySelector("button[type='submit']").textContent = "Actualizar Cliente";
 
-        document.getElementById("cedula").disabled = true;
+        document.getElementById("cedula").disabled = true;// Deshabilitar el campo cédula al editar
 }
